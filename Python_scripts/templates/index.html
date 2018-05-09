@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Surfing</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+        td,
+        th {
+            padding: 7px;
+        }
+
+        .info-container {
+            padding: 20px;
+        }
+
+        .weather {
+            float: right;
+            width: 300px;
+            word-wrap: break-word;
+        }
+
+        .featured_img {
+            display: grid;
+            justify-items: center;
+        }
+
+        .hemispheres {
+            /* display: grid;            
+            justify-items: center */
+            /* align-items: center; */
+            text-align: center;
+            padding: 0px 10% 0px 10%;
+        }
+
+        .card {
+            --br : 5px;
+            --card-width: 40rem;
+            width: var(--card-width);
+            border-radius: var(--br);
+            background-color: #eee;
+            float: left;
+            margin: 10px;
+        }
+
+        .card > img{
+            width: var(--card-width);            
+            border-radius: var(--br);
+        }
+
+        .card > h4, h3 { 
+            padding: 0px 0px 10px 5px;
+        }
+
+    </style>
+
+</head>
+
+
+
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>Mission To Mars</h1>
+        <a href="/scrape" class="btn btn-primary"> Scrape New Data</a>
+    </div>
+    <div>
+
+
+        <div class="info-container">
+
+            <div class="news">
+                <strong>
+                    <h2>Latest Mars News</h2>
+                    <h4>{{ data["news"]["title"] }}</h4>
+                </strong>
+                <p>{{ data["news"]["description"] }}</p>
+            </div>
+            <hr />
+
+            <div class="weather panel panel-default">
+                <div class="panel-body">
+                    <h4>Current Weather On Mars</h4>
+                    <p>{{ data["weather"] }}</p>
+                </div>
+            </div>
+
+            <div class="facts">
+                <h4>Mars Facts</h4>
+                {{ data["facts"]|safe }}
+            </div>
+
+            <hr />
+
+            <div class="featured_img container">
+                <h2>Featured Mars Image</h2>
+                <img src= {{ data[ "featured_img"] }} alt="" class="img-rounded">
+            </div>
+
+            <hr />
+
+            <div class="hemispheres">
+                <h1>Hemispheres of Mars</h1>
+                <div class="card">
+                    <img src= {{ data[ "hermisphere_imgs"][0][ "img_url"] }} alt="hemisphere 1" class="card-img-top">
+                    <h3>{{ data[ "hermisphere_imgs"][0][ "title"] }}</h3>
+                </div>
+
+                <div class="card">
+                    <img src= {{ data[ "hermisphere_imgs"][1][ "img_url"] }} alt="hemisphere 1" class="card-img-top">
+                    <h3>{{ data[ "hermisphere_imgs"][1][ "title"] }}</h3>
+                </div>
+
+
+                <div class="card">
+                    <img src= {{ data[ "hermisphere_imgs"][2][ "img_url"] }} alt="hemisphere 1" class="card-img-top">
+                    <h3>{{ data[ "hermisphere_imgs"][2][ "title"] }}</h3>
+                </div>
+
+                <div class="card">
+                    <img src= {{ data[ "hermisphere_imgs"][3][ "img_url"] }} alt="hemisphere 1" class="card-img-top">
+                    <h3>{{ data[ "hermisphere_imgs"][3][ "title"] }}</h3>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+</body>
+
+</html>
