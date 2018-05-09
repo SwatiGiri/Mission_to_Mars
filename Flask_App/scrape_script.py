@@ -3,6 +3,7 @@
 # scrape different websites and get data
 # finally it pushes that data to mongo db
 # Make sure to start your mongo db server before running
+#
 # Get functions are all helper functs
 # scrape_and_push_to_db calls all the helper methods
 #
@@ -65,7 +66,6 @@ def get_news():
     news_p = news_p.strip()
     news_title = news_title.strip()
 
-    # adding data to mongo db
     return  {
                 "title" : news_title,
                 "description" : news_p
@@ -101,7 +101,6 @@ def get_featured_image():
     image_url = "https://www.jpl.nasa.gov" + results['src']
     print(image_url)
     browser.quit()
-    # pushing url to mongo db
     return image_url
 
 def get_weather():
